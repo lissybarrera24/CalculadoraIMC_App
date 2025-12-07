@@ -1,0 +1,42 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:CalculadoraIMCApp.ViewModels"
+    x:Class="CalculadoraIMCApp.Views.IMCPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:IMCViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="25" Spacing="15">
+
+        <Label Text="Calculadora IMC"
+               FontSize="30"
+               HorizontalOptions="Center"
+               FontAttributes="Bold" />
+
+        <Picker Title="Selecciona el sistema"
+                ItemsSource="{Binding Sistemas}"
+                SelectedItem="{Binding SistemaSeleccionado}" />
+
+        <Entry Placeholder="Estatura"
+               Keyboard="Numeric"
+               Text="{Binding Estatura}" />
+
+        <Entry Placeholder="Peso"
+               Keyboard="Numeric"
+               Text="{Binding Peso}" />
+
+        <Button Text="Calcular IMC"
+                Command="{Binding CalcularIMCCommand}" />
+
+        <Label Text="{Binding ResultadoIMC, StringFormat='IMC: {0:F2}'}"
+               FontSize="22"
+               HorizontalOptions="Center" />
+
+        <Label Text="{Binding Clasificacion}"
+               FontSize="22"
+               HorizontalOptions="Center"
+               TextColor="DarkBlue" />
+    </VerticalStackLayout>
+</ContentPage>
